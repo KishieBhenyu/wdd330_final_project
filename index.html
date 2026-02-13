@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture Study Tracker – Home</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <script src="js/home.js"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__left">
+      <span class="site-logo">📖</span>
+      <span class="site-name">Scripture Study Tracker</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="search.html" class="site-nav__link">Search</a>
+      <a href="plan.html" class="site-nav__link">Plan</a>
+      <a href="history.html" class="site-nav__link">History</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Settings icon (always on far right) -->
+    <button class="settings-btn" aria-label="Settings">
+      ⚙
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="search.html" class="mobile-menu__link">Search</a>
+      <a href="plan.html" class="mobile-menu__link">Plan</a>
+      <a href="history.html" class="mobile-menu__link">History</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1>Make your scripture study consistent and meaningful.</h1>
+      <p>
+        Track your readings, stay on top of your goals, and discover daily
+        inspiration—all in one place.
+      </p>
+      <button id="hero-start-btn" class="btn-primary">
+        Start Today’s Reading
+      </button>
+    </div>
+    <div class="hero__image">
+      <!-- You can replace this gradient block with an <img> later -->
+      <div class="hero__image-inner">
+        <span class="hero-badge">Today</span>
+        <p class="hero-verse-preview">
+          “For God so loved the world, that he gave his only begotten Son…”
+        </p>
+        <p class="hero-verse-ref">John 3:16</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- Today’s Reading -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Today’s Reading</h2>
+      </header>
+      <div class="card__body">
+        <p id="today-ref">Alma 32:1–10</p>
+        <p id="today-goal">Goal: 10 verses</p>
+
+        <div class="card__center">
+          <button id="btn-start-reading" class="btn-outline">
+            [ Start Reading ]
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Your Progress -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Your Progress</h2>
+      </header>
+      <div class="card__body">
+        <div class="progress-row">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-bar__fill"></div>
+          </div>
+          <span id="progress-percent" class="progress-percent">0%</span>
+        </div>
+        <p id="streak-text">Streak: 0 days</p>
+        <p id="chapters-text">Chapters read: 0</p>
+      </div>
+    </section>
+
+    <!-- Verse of the Day -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Verse of the Day</h2>
+      </header>
+      <div class="card__body">
+        <p id="verse-text" class="quote-text">“Scripture text preview…”</p>
+        <p id="verse-ref">Mosiah 2:17</p>
+        <a id="view-full-chapter" href="#" class="card__link">
+          View full chapter &gt;
+        </a>
+      </div>
+    </section>
+
+    <!-- Quote of the Day -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Quote of the Day</h2>
+      </header>
+      <div class="card__body">
+        <p id="quote-text" class="quote-text">“Quote text preview…”</p>
+        <p id="quote-author">– Author</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <small>© 2026 Scripture Study Tracker</small>
+  </footer>
+
+</body>
+</html>
