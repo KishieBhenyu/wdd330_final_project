@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture Study Tracker – Settings</title>
+  <link rel="stylesheet" href="css/settings.css" />
+  <script src="js/settings.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__left">
+      <span class="site-logo">📖</span>
+      <span class="site-name">Scripture Study Tracker</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="search.html" class="site-nav__link">Search</a>
+      <a href="plan.html" class="site-nav__link">Plan</a>
+      <a href="history.html" class="site-nav__link">History</a>
+      <a href="settings.html" class="site-nav__link site-nav__link--active">Settings</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Settings icon (non-functional here, page already open) -->
+    <button class="settings-btn" aria-label="Settings">
+      ⚙
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="search.html" class="mobile-menu__link">Search</a>
+      <a href="plan.html" class="mobile-menu__link">Plan</a>
+      <a href="history.html" class="mobile-menu__link">History</a>
+      <a href="settings.html" class="mobile-menu__link mobile-menu__link--active">Settings</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Theme settings -->
+    <section class="card">
+      <header class="card__header">
+        <h1 class="card__title">Appearance</h1>
+      </header>
+      <div class="card__body">
+        <div class="setting-row">
+          <div class="setting-text">
+            <h2>Theme</h2>
+            <p>Choose between light and dark mode for the app.</p>
+          </div>
+          <label class="toggle">
+            <span class="toggle__label">Dark mode</span>
+            <input type="checkbox" id="theme-toggle" />
+            <span class="toggle__slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <h2>Font size</h2>
+            <p>Adjust the base font size for better readability.</p>
+          </div>
+          <div class="btn-group" role="radiogroup" aria-label="Font size">
+            <button class="btn-chip" data-font-size="normal">Normal</button>
+            <button class="btn-chip" data-font-size="large">Large</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">About these settings</h2>
+      </header>
+      <div class="card__body">
+        <p class="helper-text">
+          Settings are stored only in this browser using local storage. If you clear your
+          browser data or switch devices, you may need to set your preferences again.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2026 Scripture Study Tracker</small>
+  </footer>
+</body>
+</html>
