@@ -1,7 +1,7 @@
 // APIs
-const SCRIPTURE_API_URL = "https://bible-api.com/john%203:16"; // [web:56]
+const SCRIPTURE_API_URL = "https://bible-api.com/john%203:16"; 
 const QUOTE_API_URL =
-  "https://quote-garden.herokuapp.com/api/v3/quotes/random"; // [web:61][web:70]
+  "https://quote-garden.herokuapp.com/api/v3/quotes/random"; 
 
 // Storage keys
 const STORAGE_KEYS = {
@@ -25,7 +25,7 @@ function loadJSON(key, fallback) {
   }
 }
 
-// Progress
+
 
 function updateProgressUI() {
   const streak = loadJSON(STORAGE_KEYS.STREAK, 0);
@@ -82,7 +82,7 @@ async function loadQuote() {
   try {
     const res = await fetch(QUOTE_API_URL);
     const data = await res.json();
-    const q = data.data?.[0]; // Quote Garden v3 [web:61][web:70]
+    const q = data.data?.[0]; 
     quoteTextEl.textContent = `“${q?.quoteText || "Quote unavailable."}”`;
     quoteAuthorEl.textContent = q?.quoteAuthor
       ? `– ${q.quoteAuthor}`
