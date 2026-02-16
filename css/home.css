@@ -206,68 +206,65 @@ body {
   color: var(--accent);
 }
 
-/* Hero */
-
 .hero {
-  max-width: var(--max-width);
-  margin: 0.75rem auto 0.4rem;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1rem;
-  align-items: center;
+  width: 100%;
+  margin: 0.75rem 0 0.4rem;
+  min-height: 240px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Image spans full section */
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay layer on top of image */
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.85),
+    rgba(15, 23, 42, 0.45)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem 1rem;
+}
+
+/* Text content */
 
 .hero__content h1 {
   font-size: 1.4rem;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.4rem;
 }
 
 .hero__content p {
   margin: 0 0 0.8rem;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
 }
 
-.btn-primary {
-  border-radius: 999px;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-  color: #ecfeff;
-  cursor: pointer;
-  box-shadow: 0 14px 30px rgba(8, 47, 73, 0.9);
-}
+/* Bottom badge card */
 
-/* Hero image block */
-
-.hero__image {
-  position: relative;
-  min-height: 160px;
-}
-
-.hero__image-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.35), transparent 55%),
-    linear-gradient(135deg, #020617, #0f172a);
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  box-shadow: var(--shadow-soft);
-  padding: 0.9rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.hero__badge-card {
+  align-self: stretch;
+  padding: 0.6rem 0.7rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  backdrop-filter: blur(6px);
 }
 
 .hero-badge {
-  align-self: flex-start;
+  display: inline-block;
   padding: 0.15rem 0.6rem;
   border-radius: 999px;
   font-size: 0.75rem;
@@ -275,19 +272,25 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.5);
+  border: 1px solid rgba(56, 189, 248, 0.6);
 }
 
 .hero-verse-preview {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-style: italic;
-  margin: 0.6rem 0 0.3rem;
+  margin: 0.5rem 0 0.25rem;
 }
 
 .hero-verse-ref {
   font-size: 0.8rem;
   color: var(--text-muted);
   margin: 0;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 280px;
+  }
 }
 
 /* Main content */
