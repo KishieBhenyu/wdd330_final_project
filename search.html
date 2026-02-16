@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture Study Tracker – Search</title>
+  <link rel="stylesheet" href="css/search.css" />
+  <script src="js/search.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__left">
+      <span class="site-logo">📖</span>
+      <span class="site-name">Scripture Study Tracker</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="search.html" class="site-nav__link site-nav__link--active">Search</a>
+      <a href="plan.html" class="site-nav__link">Plan</a>
+      <a href="history.html" class="site-nav__link">History</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Settings icon -->
+    <button class="settings-btn" aria-label="Settings">
+      ⚙
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="search.html" class="mobile-menu__link mobile-menu__link--active">Search</a>
+      <a href="plan.html" class="mobile-menu__link">Plan</a>
+      <a href="history.html" class="mobile-menu__link">History</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Search controls -->
+    <section class="card">
+      <header class="card__header">
+        <h1 class="card__title">Search Scriptures</h1>
+      </header>
+      <div class="card__body">
+        <div class="search-row">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search by word, topic, or reference…"
+            aria-label="Search scriptures"
+          />
+          <button id="search-btn" class="btn-primary">
+            Search
+          </button>
+        </div>
+
+        <div class="filter-row">
+          <span class="filter-label">Scope:</span>
+          <button class="chip chip--active" data-filter="all">All</button>
+          <button class="chip" data-filter="bom">Book of Mormon</button>
+          <button class="chip" data-filter="bible">Bible</button>
+        </div>
+
+        <p class="helper-text">
+          For now, this demo searches a small local set of verses. Later you can
+          swap in your scripture API results.
+        </p>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Results</h2>
+      </header>
+      <div class="card__body">
+        <ul id="results-list" class="results-list">
+          <li class="results-list__empty">
+            Start by typing a word like <strong>faith</strong>, <strong>service</strong>,
+            or a reference such as <strong>John 3:16</strong>.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2026 Scripture Study Tracker</small>
+  </footer>
+</body>
+</html>

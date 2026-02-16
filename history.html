@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture Study Tracker – History</title>
+  <link rel="stylesheet" href="css/history.css" />
+  <script src="js/history.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__left">
+      <span class="site-logo">📖</span>
+      <span class="site-name">Scripture Study Tracker</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="search.html" class="site-nav__link">Search</a>
+      <a href="plan.html" class="site-nav__link">Plan</a>
+      <a href="history.html" class="site-nav__link site-nav__link--active">History</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Settings icon -->
+    <button class="settings-btn" aria-label="Settings">
+      ⚙
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="search.html" class="mobile-menu__link">Search</a>
+      <a href="plan.html" class="mobile-menu__link">Plan</a>
+      <a href="history.html" class="mobile-menu__link mobile-menu__link--active">History</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- History summary -->
+    <section class="card">
+      <header class="card__header">
+        <h1 class="card__title">Study History</h1>
+      </header>
+      <div class="card__body">
+        <p class="helper-text">
+          This page shows a timeline of passages you’ve completed. Items are
+          stored in your browser so you can see your progress over time.
+        </p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Timeline</h2>
+      </header>
+      <div class="card__body">
+        <ul id="history-list" class="timeline">
+          <li class="timeline__empty">
+            No history yet. Complete a reading on the home or plan page to see it appear here.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Clear history -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Manage History</h2>
+      </header>
+      <div class="card__body">
+        <button id="clear-history-btn" class="btn-danger">
+          Clear History
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2026 Scripture Study Tracker</small>
+  </footer>
+</body>
+</html>

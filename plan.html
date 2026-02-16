@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripture Study Tracker – Plan</title>
+  <link rel="stylesheet" href="css/plan.css" />
+  <script src="js/plan.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__left">
+      <span class="site-logo">📖</span>
+      <span class="site-name">Scripture Study Tracker</span>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" class="site-nav__link">Home</a>
+      <a href="search.html" class="site-nav__link">Search</a>
+      <a href="plan.html" class="site-nav__link site-nav__link--active">Plan</a>
+      <a href="history.html" class="site-nav__link">History</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="hamburger"
+      class="hamburger"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Settings icon -->
+    <button class="settings-btn" aria-label="Settings">
+      ⚙
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="search.html" class="mobile-menu__link">Search</a>
+      <a href="plan.html" class="mobile-menu__link mobile-menu__link--active">Plan</a>
+      <a href="history.html" class="mobile-menu__link">History</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- Current Plan -->
+    <section class="card">
+      <header class="card__header">
+        <h1 class="card__title">Current Plan</h1>
+      </header>
+      <div class="card__body">
+        <p id="plan-name-display" class="plan-name">No plan created yet</p>
+        <p id="plan-summary" class="plan-summary">
+          Create a plan below to get a daily schedule.
+        </p>
+
+        <div class="progress-row">
+          <div class="progress-bar">
+            <div id="plan-progress-fill" class="progress-bar__fill"></div>
+          </div>
+          <span id="plan-progress-percent" class="progress-percent">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Create Plan -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Create / Update Plan</h2>
+      </header>
+      <div class="card__body">
+        <form id="plan-form" class="form">
+          <label class="form__field">
+            <span>Plan name</span>
+            <input
+              type="text"
+              id="plan-name-input"
+              placeholder="e.g. Book of Mormon in 60 days"
+              required
+            />
+          </label>
+
+          <label class="form__field">
+            <span>Total days</span>
+            <input
+              type="number"
+              id="plan-days-input"
+              min="1"
+              value="30"
+              required
+            />
+          </label>
+
+          <label class="form__field">
+            <span>Verses per day</span>
+            <input
+              type="number"
+              id="plan-verses-input"
+              min="1"
+              value="10"
+              required
+            />
+          </label>
+
+          <button type="submit" class="btn-primary">
+            Generate Plan
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Upcoming Readings -->
+    <section class="card">
+      <header class="card__header">
+        <h2 class="card__title">Upcoming Readings</h2>
+      </header>
+      <div class="card__body">
+        <ul id="readings-list" class="readings-list">
+          <li class="readings-list__empty">
+            No readings yet. Create a plan above to generate a schedule.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2026 Scripture Study Tracker</small>
+  </footer>
+</body>
+</html>
