@@ -1,8 +1,6 @@
 const THEME_KEY = "sstheme";
 const FONT_KEY = "ssfont";
 
-/* Hamburger for mobile */
-
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -15,7 +13,7 @@ function setupHamburger() {
   });
 }
 
-/* Theme toggle */
+// THEME
 
 function applyTheme(theme) {
   document.body.classList.remove("theme-light");
@@ -30,7 +28,7 @@ function setupThemeToggle() {
 
   const storedTheme = localStorage.getItem(THEME_KEY) || "dark";
   applyTheme(storedTheme);
-  toggle.checked = storedTheme === "dark" ? true : false;
+  toggle.checked = storedTheme === "dark";
 
   toggle.addEventListener("change", () => {
     const newTheme = toggle.checked ? "dark" : "light";
@@ -39,7 +37,7 @@ function setupThemeToggle() {
   });
 }
 
-/* Font size */
+// FONT SIZE
 
 function applyFontSize(size) {
   document.body.classList.remove("font-large");
@@ -70,8 +68,6 @@ function setupFontButtons() {
     });
   });
 }
-
-/* Init */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHamburger();
