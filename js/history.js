@@ -1,3 +1,4 @@
+
 const HISTORY_KEY = "studyHistory";
 
 function loadHistory() {

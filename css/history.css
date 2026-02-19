@@ -1,15 +1,21 @@
 :root {
-  --bg: #020617;
-  --surface: rgba(15, 23, 42, 0.96);
-  --border-soft: rgba(148, 163, 184, 0.4);
-  --accent: #38bdf8;
-  --accent-strong: #0ea5e9;
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  --bg-dark: #020617;
+  --bg-light: #f3f4f6;              
+  --surface-dark: rgba(15, 23, 42, 0.96);
+  --surface-light: #ffffff;
+  --border-soft-dark: rgba(148, 163, 184, 0.4);
+  --border-soft-light: #d1d5db;      /* stronger border */
+  --accent: #0ea5e9;
+  --accent-strong: #0369a1;
+  --text-main-dark: #e5e7eb;
+  --text-muted-dark: #9ca3af;
+  --text-main-light: #111827;       /* dark text */
+  --text-muted-light: #4b5563;      /* darker muted text */
   --radius-lg: 18px;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-  --max-width: 900px;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.15); /* softer shadow in light mode */
+  --max-width: 800px;
 }
+
 
 /* Reset */
 
