@@ -1,5 +1,6 @@
 const STORAGE_KEY_PLAN = "scripturePlan";
 
+//  Storage 
 function savePlan(plan) {
   localStorage.setItem(STORAGE_KEY_PLAN, JSON.stringify(plan));
 }
@@ -14,7 +15,7 @@ function loadPlan() {
   }
 }
 
-/* Hamburger / mobile nav */
+//Hamburger 
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -27,14 +28,16 @@ function setupHamburger() {
   });
 }
 
-/* Current plan UI */
+// Plan Summary 
 function renderPlanSummary(plan) {
   const nameEl = document.getElementById("plan-name-display");
   const summaryEl = document.getElementById("plan-summary");
   const fillEl = document.getElementById("plan-progress-fill");
   const pctEl = document.getElementById("plan-progress-percent");
 
-  if (!plan) {
+  if (!nameEl || !summaryEl || !fillEl || !pctEl) return;
+
+  if (!plan || !Array.isArray(plan.readings)) {
     nameEl.textContent = "No plan created yet";
     summaryEl.textContent = "Create a plan below to get a daily schedule.";
     fillEl.style.width = "0%";
@@ -45,18 +48,21 @@ function renderPlanSummary(plan) {
   nameEl.textContent = plan.name;
   summaryEl.textContent = `${plan.totalDays} days • ${plan.versesPerDay} verses per day`;
 
-  const completedDays = plan.readings.filter((r) => r.completed).length;
+  const completedDays = plan.readings.filter(r => r.completed).length;
   const pct = Math.min((completedDays / plan.totalDays) * 100, 100);
+
   fillEl.style.width = `${pct}%`;
   pctEl.textContent = `${pct.toFixed(0)}%`;
 }
 
-/* Upcoming readings list */
+// Readings List 
 function renderReadings(plan) {
   const list = document.getElementById("readings-list");
+  if (!list) return;
+
   list.innerHTML = "";
 
-  if (!plan || !plan.readings.length) {
+  if (!plan || !Array.isArray(plan.readings) || plan.readings.length === 0) {
     const li = document.createElement("li");
     li.className = "readings-list__empty";
     li.textContent =
@@ -71,7 +77,8 @@ function renderReadings(plan) {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.checked = reading.completed;
+    checkbox.checked = Boolean(reading.completed);
+
     checkbox.addEventListener("change", () => {
       reading.completed = checkbox.checked;
       savePlan(plan);
@@ -87,16 +94,13 @@ function renderReadings(plan) {
     const desc = document.createElement("span");
     desc.textContent = reading.description;
 
-    main.appendChild(title);
-    main.appendChild(desc);
-
-    li.appendChild(checkbox);
-    li.appendChild(main);
+    main.append(title, desc);
+    li.append(checkbox, main);
     list.appendChild(li);
   });
 }
 
-/* Plan creation */
+//  Plan Creation 
 function generateReadings(totalDays, versesPerDay) {
   const readings = [];
   for (let i = 1; i <= totalDays; i++) {
@@ -113,6 +117,8 @@ function setupForm() {
   const nameInput = document.getElementById("plan-name-input");
   const daysInput = document.getElementById("plan-days-input");
   const versesInput = document.getElementById("plan-verses-input");
+
+  if (!form || !nameInput || !daysInput || !versesInput) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -136,7 +142,7 @@ function setupForm() {
   });
 }
 
-/* Init */
+//  Init 
 document.addEventListener("DOMContentLoaded", () => {
   setupHamburger();
   setupForm();
@@ -144,4 +150,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const existing = loadPlan();
   renderPlanSummary(existing);
   renderReadings(existing);
+});
+
+checkbox.addEventListener("change", () => {
+  reading.completed = checkbox.checked;
+  savePlan(plan);
+  renderPlanSummary(plan);
+
+  if (checkbox.checked) {
+    addHistoryEntry({
+      ref: `Day ${index + 1}`,
+      note: reading.description,
+    });
+  }
 });

@@ -1,11 +1,12 @@
-
 const HISTORY_KEY = "studyHistory";
+
 
 function loadHistory() {
   const raw = localStorage.getItem(HISTORY_KEY);
   if (!raw) return [];
   try {
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
   } catch {
     return [];
   }
@@ -14,8 +15,6 @@ function loadHistory() {
 function saveHistory(history) {
   localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
 }
-
-/* Hamburger */
 
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
@@ -29,12 +28,11 @@ function setupHamburger() {
   });
 }
 
-/* Render timeline */
-
 function renderHistory() {
   const list = document.getElementById("history-list");
-  const history = loadHistory();
+  if (!list) return;
 
+  const history = loadHistory();
   list.innerHTML = "";
 
   if (!history.length) {
@@ -46,7 +44,7 @@ function renderHistory() {
     return;
   }
 
-  // show newest first
+
   history
     .slice()
     .reverse()
@@ -59,38 +57,36 @@ function renderHistory() {
 
       const dateP = document.createElement("p");
       dateP.className = "timeline-date";
-      dateP.textContent = item.date || "Unknown date";
+      dateP.textContent = item?.date || "Unknown date";
 
       const refP = document.createElement("p");
       refP.className = "timeline-ref";
-      refP.textContent = item.ref || "Reference";
+      refP.textContent = item?.ref || "Reference";
 
-      const noteP = document.createElement("p");
-      noteP.className = "timeline-note";
-      noteP.textContent = item.note || "";
+      li.append(dot, dateP, refP);
 
-      li.appendChild(dot);
-      li.appendChild(dateP);
-      li.appendChild(refP);
-      if (item.note) li.appendChild(noteP);
+      if (item?.note) {
+        const noteP = document.createElement("p");
+        noteP.className = "timeline-note";
+        noteP.textContent = item.note;
+        li.appendChild(noteP);
+      }
 
       list.appendChild(li);
     });
 }
 
-/* Clear button */
 
 function setupClearButton() {
   const btn = document.getElementById("clear-history-btn");
   if (!btn) return;
+
   btn.addEventListener("click", () => {
     if (!confirm("Clear all study history?")) return;
     saveHistory([]);
     renderHistory();
   });
 }
-
-/* Init */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupHamburger();

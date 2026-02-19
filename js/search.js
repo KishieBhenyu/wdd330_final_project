@@ -1,6 +1,4 @@
 
-
-// Non-trivial JSON array: >= 8 attributes per verse
 const SAMPLE_VERSES = [
   {
     id: 1,
@@ -56,7 +54,7 @@ const SAMPLE_VERSES = [
   },
 ];
 
-// Hamburger
+// ================== Hamburger ==================
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -69,8 +67,11 @@ function setupHamburger() {
   });
 }
 
+
 function setupFilters() {
   const chips = document.querySelectorAll(".chip");
+  if (!chips.length) return;
+
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       chips.forEach((c) => c.classList.remove("chip--active"));
@@ -85,9 +86,13 @@ function getActiveFilter() {
   return active ? active.dataset.filter : "all";
 }
 
+
 function performSearch() {
   const input = document.getElementById("search-input");
   const list = document.getElementById("results-list");
+
+  if (!input || !list) return;
+
   const query = input.value.trim().toLowerCase();
   const filter = getActiveFilter();
 
@@ -104,10 +109,12 @@ function performSearch() {
 
   const matches = SAMPLE_VERSES.filter((v) => {
     if (filter !== "all" && v.group !== filter) return false;
+
     return (
       v.ref.toLowerCase().includes(query) ||
       v.text.toLowerCase().includes(query) ||
-      v.tags.some((t) => t.toLowerCase().includes(query))
+      (Array.isArray(v.tags) &&
+        v.tags.some((t) => t.toLowerCase().includes(query)))
     );
   });
 
@@ -133,13 +140,9 @@ function performSearch() {
 
     const srcP = document.createElement("p");
     srcP.className = "result-source";
-    srcP.textContent = `${v.source} • ${v.collection} • Tags: ${v.tags.join(
-      ", "
-    )}`;
+    srcP.textContent = `${v.source} • ${v.collection} • Tags: ${v.tags.join(", ")}`;
 
-    li.appendChild(refSpan);
-    li.appendChild(textP);
-    li.appendChild(srcP);
+    li.append(refSpan, textP, srcP);
     list.appendChild(li);
   });
 }
@@ -148,14 +151,24 @@ function setupSearch() {
   const input = document.getElementById("search-input");
   const button = document.getElementById("search-btn");
 
+  if (!input || !button) return;
+
   button.addEventListener("click", performSearch);
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") performSearch();
   });
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
   setupHamburger();
   setupFilters();
   setupSearch();
+});
+
+li.addEventListener("click", () => {
+  addHistoryEntry({
+    ref: v.ref,
+    note: `Viewed from search (${v.source})`,
+  });
 });

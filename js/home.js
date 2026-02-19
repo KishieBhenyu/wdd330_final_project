@@ -1,16 +1,16 @@
-// APIs
-const SCRIPTURE_API_URL = "https://bible-api.com/john%203:16"; 
-const QUOTE_API_URL =
-  "https://quote-garden.herokuapp.com/api/v3/quotes/random"; 
+// APIs 
+const SCRIPTURE_API_URL = "https://bible-api.com/john%203:16";
 
-// Storage keys
+// NEW working quote API
+const QUOTE_API_URL = "https://api.quotable.io/random";
+
+// Storage 
 const STORAGE_KEYS = {
   STREAK: "sstreak",
   CHAPTERS: "schapters",
 };
 
-// Helpers
-
+// Helpers 
 function saveJSON(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
@@ -25,8 +25,7 @@ function loadJSON(key, fallback) {
   }
 }
 
-
-
+// Progress UI 
 function updateProgressUI() {
   const streak = loadJSON(STORAGE_KEYS.STREAK, 0);
   const chapters = loadJSON(STORAGE_KEYS.CHAPTERS, 0);
@@ -35,6 +34,8 @@ function updateProgressUI() {
   const chaptersText = document.getElementById("chapters-text");
   const fill = document.getElementById("progress-fill");
   const percentEl = document.getElementById("progress-percent");
+
+  if (!streakText || !chaptersText || !fill || !percentEl) return;
 
   streakText.textContent = `Streak: ${streak} day${streak === 1 ? "" : "s"}`;
   chaptersText.textContent = `Chapters read: ${chapters}`;
@@ -45,56 +46,55 @@ function updateProgressUI() {
 }
 
 function incrementProgress() {
-  let streak = loadJSON(STORAGE_KEYS.STREAK, 0);
-  let chapters = loadJSON(STORAGE_KEYS.CHAPTERS, 0);
-
-  streak += 1;
-  chapters += 1;
+  const streak = loadJSON(STORAGE_KEYS.STREAK, 0) + 1;
+  const chapters = loadJSON(STORAGE_KEYS.CHAPTERS, 0) + 1;
 
   saveJSON(STORAGE_KEYS.STREAK, streak);
   saveJSON(STORAGE_KEYS.CHAPTERS, chapters);
   updateProgressUI();
 }
 
-// Verse API
-
+// Verse API 
 async function loadVerse() {
   const verseTextEl = document.getElementById("verse-text");
   const verseRefEl = document.getElementById("verse-ref");
 
+  if (!verseTextEl || !verseRefEl) return;
+
   try {
     const res = await fetch(SCRIPTURE_API_URL);
+    if (!res.ok) throw new Error("Verse fetch failed");
+
     const data = await res.json();
-    verseTextEl.textContent = `“${(data.text || "").trim()}”`;
-    verseRefEl.textContent = data.reference || "";
-  } catch (err) {
+    verseTextEl.textContent = `“${data.text.trim()}”`;
+    verseRefEl.textContent = data.reference;
+  } catch {
     verseTextEl.textContent = "“Unable to load verse.”";
     verseRefEl.textContent = "";
   }
 }
 
-// Quote API
-
+//  Quote API 
 async function loadQuote() {
   const quoteTextEl = document.getElementById("quote-text");
   const quoteAuthorEl = document.getElementById("quote-author");
 
+  if (!quoteTextEl || !quoteAuthorEl) return;
+
   try {
     const res = await fetch(QUOTE_API_URL);
+    if (!res.ok) throw new Error("Quote fetch failed");
+
     const data = await res.json();
-    const q = data.data?.[0]; 
-    quoteTextEl.textContent = `“${q?.quoteText || "Quote unavailable."}”`;
-    quoteAuthorEl.textContent = q?.quoteAuthor
-      ? `– ${q.quoteAuthor}`
-      : "– Unknown";
-  } catch (err) {
+    quoteTextEl.textContent = `“${data.content}”`;
+    quoteAuthorEl.textContent = `– ${data.author || "Unknown"}`;
+  } catch {
     quoteTextEl.textContent = "“Unable to load quote.”";
     quoteAuthorEl.textContent = "";
   }
 }
 
-// Nav: mobile hamburger
-
+// Hamburger Menu 
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -108,17 +108,25 @@ function setupHamburger() {
   });
 }
 
-// Init
-
+// Init 
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("btn-start-reading");
   const heroStartBtn = document.getElementById("hero-start-btn");
 
-  startBtn.addEventListener("click", incrementProgress);
-  heroStartBtn.addEventListener("click", incrementProgress);
+  if (startBtn) startBtn.addEventListener("click", incrementProgress);
+  if (heroStartBtn) heroStartBtn.addEventListener("click", incrementProgress);
 
   updateProgressUI();
   loadVerse();
   loadQuote();
   setupHamburger();
+});
+
+startBtn.addEventListener("click", () => {
+  incrementProgress();
+
+  addHistoryEntry({
+    ref: "John 3:16",
+    note: "Completed daily reading",
+  });
 });

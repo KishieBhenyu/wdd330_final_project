@@ -6,6 +6,24 @@
   <title>Scripture Study Tracker – History</title>
   <link rel="stylesheet" href="css/history.css" />
   <script src="js/history.js" defer></script>
+  <script type="module">
+  import { getHistory, clearHistory } from "./js/history_helper.js";
+
+  const historyList = document.getElementById("history-list");
+  const history = getHistory();
+
+  history.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = `${item.timestamp} — ${item.action} (${item.details})`;
+    historyList.appendChild(li);
+  });
+
+  document.getElementById("clear-history-btn").addEventListener("click", () => {
+    clearHistory();
+    location.reload();
+  });
+</script>
+
 </head>
 <body>
   <!-- HEADER -->
