@@ -32,8 +32,8 @@ body.theme-light {
   --bg: var(--bg-light);
   --surface: var(--surface-light);
   --border-soft: var(--border-soft-light);
-  --text-main: var(--text-main-light);
-  --text-muted: var(--text-muted-light);
+  --text-main: var(--text-main-dark);
+  --text-muted: var(--text-muted-dark);
 }
 
 /* Reset */
