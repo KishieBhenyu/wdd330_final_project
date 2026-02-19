@@ -7,52 +7,56 @@
   <link rel="stylesheet" href="css/search.css" />
   <script src="js/search.js" defer></script>
    <script type="module">import { getHistory } from "./js/history_helper.js"; getHistory();</script>
-   
+   <script src="js/app.js" defer></script>
+
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="site-header__left">
-      <span class="site-logo">📖</span>
-      <span class="site-name">Scripture Study Tracker</span>
-    </div>
+ <!-- HEADER -->
+<header class="site-header">
+  <div class="site-header__left">
+    <span class="site-logo">📖</span>
+    <span class="site-name">Scripture Study Tracker</span>
+  </div>
 
-    <!-- Desktop nav -->
-    <nav class="site-nav" aria-label="Primary">
-      <a href="index.html" class="site-nav__link">Home</a>
-      <a href="search.html" class="site-nav__link site-nav__link--active">Search</a>
-      <a href="plan.html" class="site-nav__link">Plan</a>
-      <a href="history.html" class="site-nav__link">History</a>
-    </nav>
+  <!-- Desktop nav -->
+  <nav class="site-nav" aria-label="Primary">
+    <a href="index.html" class="site-nav__link">Home</a>
+    <a href="search.html" class="site-nav__link">Search</a>
+    <a href="plan.html" class="site-nav__link">Plan</a>
+    <a href="history.html" class="site-nav__link">History</a>
+    <a href="settings.html" class="site-nav__link">Settings</a>
+  </nav>
 
-    <!-- Mobile hamburger -->
-    <button
-      id="hamburger"
-      class="hamburger"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <!-- Mobile hamburger -->
+  <button
+    id="hamburger"
+    class="hamburger"
+    aria-label="Toggle navigation"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-   <button
-  class="settings-btn"
-  aria-label="Settings"
-  onclick="window.location.href='settings.html'"
->
-  ⚙
-</button>
+  <!-- Settings icon -->
+  <button
+    class="settings-btn"
+    aria-label="Settings"
+    onclick="window.location.href='settings.html'"
+  >
+    ⚙
+  </button>
 
-    <!-- Mobile dropdown menu -->
-    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-      <a href="index.html" class="mobile-menu__link">Home</a>
-      <a href="search.html" class="mobile-menu__link mobile-menu__link--active">Search</a>
-      <a href="plan.html" class="mobile-menu__link">Plan</a>
-      <a href="history.html" class="mobile-menu__link">History</a>
-    </nav>
-  </header>
+  <!-- Mobile dropdown menu -->
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-menu__link">Home</a>
+    <a href="search.html" class="mobile-menu__link">Search</a>
+    <a href="plan.html" class="mobile-menu__link">Plan</a>
+    <a href="history.html" class="mobile-menu__link">History</a>
+    <a href="settings.html" class="mobile-menu__link">Settings</a>
+  </nav>
+</header>
 
   <main class="main">
     <!-- Search controls -->
