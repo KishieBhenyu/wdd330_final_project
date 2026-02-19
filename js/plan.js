@@ -15,7 +15,6 @@ function loadPlan() {
 }
 
 /* Hamburger / mobile nav */
-
 function setupHamburger() {
   const hamburger = document.getElementById("hamburger");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -29,7 +28,6 @@ function setupHamburger() {
 }
 
 /* Current plan UI */
-
 function renderPlanSummary(plan) {
   const nameEl = document.getElementById("plan-name-display");
   const summaryEl = document.getElementById("plan-summary");
@@ -54,7 +52,6 @@ function renderPlanSummary(plan) {
 }
 
 /* Upcoming readings list */
-
 function renderReadings(plan) {
   const list = document.getElementById("readings-list");
   list.innerHTML = "";
@@ -100,7 +97,6 @@ function renderReadings(plan) {
 }
 
 /* Plan creation */
-
 function generateReadings(totalDays, versesPerDay) {
   const readings = [];
   for (let i = 1; i <= totalDays; i++) {
@@ -141,7 +137,6 @@ function setupForm() {
 }
 
 /* Init */
-
 document.addEventListener("DOMContentLoaded", () => {
   setupHamburger();
   setupForm();

@@ -74,3 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setupThemeToggle();
   setupFontButtons();
 });
+
+<button
+  class="settings-btn"
+  aria-label="Settings"
+  onclick="window.location.href='settings.html'"
+>
+  ⚙
+</button>
